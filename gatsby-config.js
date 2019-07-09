@@ -22,5 +22,11 @@ module.exports = {
         url: `${config.wordPressUrl}/graphql`,
       },
     },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
   ],
 }

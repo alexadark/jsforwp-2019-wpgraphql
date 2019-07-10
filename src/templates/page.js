@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import { PageTitle } from "../styles"
 
 const Page = ({ data }) => {
   const { title, content } = data.wpgraphql.page
   return (
     <Layout>
-      <h1 className="page-title" dangerouslySetInnerHTML={{ __html: title }} />
+      <PageTitle dangerouslySetInnerHTML={{ __html: title }} />
       <p className="content" dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   )

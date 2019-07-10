@@ -1,6 +1,38 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import { createLocalLink } from "../utils"
+import styled from "styled-components"
+
+const HeaderMenu = styled.nav`
+  display: flex;
+  align-items: center;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    > li {
+      padding-right: 20px;
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #999999;
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 1.5px;
+        border: none;
+
+        &:hover,
+        &:active {
+          color: #111;
+        }
+      }
+    }
+  }
+`
 
 const MENU_QUERY = graphql`
   fragment MenuFields on WPGraphQL_MenuItem {
@@ -69,15 +101,17 @@ const Menu = () => {
 
   if (data.wpgraphql.menuItems) {
     return (
-      <ul role="menu">
-        {data.wpgraphql.menuItems.nodes.map(menuItem => {
-          if (menuItem.childItems.nodes.length) {
-            return renderSubMenu(menuItem)
-          } else {
-            return renderMenuItem(menuItem)
-          }
-        })}
-      </ul>
+      <HeaderMenu>
+        <ul role="menu">
+          {data.wpgraphql.menuItems.nodes.map(menuItem => {
+            if (menuItem.childItems.nodes.length) {
+              return renderSubMenu(menuItem)
+            } else {
+              return renderMenuItem(menuItem)
+            }
+          })}
+        </ul>
+      </HeaderMenu>
     )
   } else {
     return null

@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import { PageTitle } from "../styles"
 
 const SinglePOST = ({ data }) => {
   const {
@@ -16,7 +17,7 @@ const SinglePOST = ({ data }) => {
         <img src={featuredImage.sourceUrl} alt={featuredImage.altText} />
       )}
 
-      <h1 className="page-title" dangerouslySetInnerHTML={{ __html: title }} />
+      <PageTitle dangerouslySetInnerHTML={{ __html: title }} />
       <h2>{myTextField}</h2>
       <p className="content" dangerouslySetInnerHTML={{ __html: content }} />
       {flexibleField.length > 0 &&
